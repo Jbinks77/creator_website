@@ -12,8 +12,7 @@ import { z } from 'zod';
 const schema = z.object({
   name: z.string().min(2, 'Nom requis'),
   email: z.string().email('Email invalide'),
-  budget: z.string().min(1, 'Budget requis'),
-  projectType: z.string().min(1, 'Type requis'),
+  projectType: z.string().min(1, 'Type de projet requis'),
   message: z.string().min(20, 'Message trop court')
 });
 
@@ -32,7 +31,7 @@ export const ContactForm = () => {
     await new Promise((resolve) => setTimeout(resolve, 1200));
     console.log('Payload prêt pour endpoint futur :', data);
     reset();
-    setSuccess('Message envoyé. Réponse sous 24-48h.');
+    setSuccess('Message envoyé avec succès. Je reviens vers vous rapidement.');
   };
 
   return (
@@ -40,40 +39,39 @@ export const ContactForm = () => {
       <form onSubmit={handleSubmit(onSubmit)} className="glass-card rounded-2xl p-6">
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
-            <label className="mb-1 block text-sm">Nom</label>
-            <Input {...register('name')} placeholder="Votre nom" autoComplete="name" />
+            <label htmlFor="name" className="mb-1 block text-sm">Nom</label>
+            <Input id="name" {...register('name')} placeholder="Votre nom" autoComplete="name" />
             {errors.name && <p className="mt-1 text-xs text-rose-300">{errors.name.message}</p>}
           </div>
           <div>
-            <label className="mb-1 block text-sm">Email</label>
-            <Input {...register('email')} placeholder="vous@email.com" autoComplete="email" />
+            <label htmlFor="email" className="mb-1 block text-sm">Email</label>
+            <Input id="email" {...register('email')} placeholder="vous@email.com" autoComplete="email" />
             {errors.email && <p className="mt-1 text-xs text-rose-300">{errors.email.message}</p>}
           </div>
         </div>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          <div>
-            <label className="mb-1 block text-sm">Budget</label>
-            <Select {...register('budget')}>
-              <option value="">Sélectionner</option>
-              <option>500€ - 1200€</option><option>1200€ - 2500€</option><option>2500€+</option>
-            </Select>
-          </div>
-          <div>
-            <label className="mb-1 block text-sm">Type de projet</label>
-            <Select {...register('projectType')}>
-              <option value="">Sélectionner</option>
-              <option>Site vitrine premium</option><option>Landing page conversion</option><option>E-commerce</option><option>Refactoring / optimisation</option>
-            </Select>
-          </div>
-        </div>
+
         <div className="mt-4">
-          <label className="mb-1 block text-sm">Message</label>
-          <Textarea {...register('message')} rows={5} placeholder="Décrivez votre besoin, objectifs, délais..." />
+          <label htmlFor="projectType" className="mb-1 block text-sm">Type de projet</label>
+          <Select id="projectType" {...register('projectType')}>
+            <option value="">Sélectionner</option>
+            <option>Site vitrine premium</option>
+            <option>Landing page conversion</option>
+            <option>E-commerce</option>
+            <option>Refactoring / optimisation</option>
+          </Select>
+          {errors.projectType && <p className="mt-1 text-xs text-rose-300">{errors.projectType.message}</p>}
+        </div>
+
+        <div className="mt-4">
+          <label htmlFor="message" className="mb-1 block text-sm">Message</label>
+          <Textarea id="message" {...register('message')} rows={5} placeholder="Décrivez votre besoin, vos objectifs, votre timing..." />
           {errors.message && <p className="mt-1 text-xs text-rose-300">{errors.message.message}</p>}
         </div>
+
         <Button className="mt-5" disabled={isSubmitting}>{isSubmitting ? 'Envoi...' : 'Envoyer ma demande'}</Button>
         {success && <p className="mt-3 rounded-lg bg-emerald-400/20 px-3 py-2 text-sm text-emerald-200">{success}</p>}
       </form>
+
       <aside className="glass-card rounded-2xl p-6 text-sm text-slate-300">
         <p className="font-semibold text-white">Réponse sous 24-48h</p>
         <p className="mt-2">Disponibilité : Lun - Ven, 9h à 18h.</p>

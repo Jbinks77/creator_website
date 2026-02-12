@@ -1,55 +1,57 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { LinkButton } from '@/components/ui/button';
 
-const badges = ['Next.js', 'UI premium', 'SEO', 'Performance'];
+const HeroCanvas = dynamic(() => import('@/components/three/hero-canvas').then((mod) => mod.HeroCanvas), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 animate-pulse bg-gradient-to-b from-slate-900 to-slate-950" />
+});
 
 export const HeroSection = () => (
-  <section className="aurora relative overflow-hidden pt-16 md:pt-24">
-    <div className="pointer-events-none absolute inset-0">
-      <motion.div
-        className="absolute -left-10 top-10 h-52 w-52 rounded-full bg-cyan-300/20 blur-3xl"
-        animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="absolute right-0 top-0 h-64 w-64 rounded-full bg-violet-400/20 blur-3xl"
-        animate={{ x: [0, -40, 0], y: [0, 20, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-      />
-    </div>
+  <section className="relative min-h-[92vh] overflow-hidden">
+    <HeroCanvas />
+    <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-background" />
 
-    <div className="mx-auto max-w-6xl px-4">
-      <motion.h1
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-white md:text-7xl"
-      >
-        Des expériences web{' '}
-        <span className="bg-gradient-to-r from-cyan-200 to-violet-300 bg-clip-text text-transparent transition hover:brightness-125">
-          qui transforment vos visiteurs en clients.
-        </span>
-      </motion.h1>
-      <p className="mt-6 max-w-2xl text-lg text-slate-300">Des sites web qui font vendre — design, performance, conversion.</p>
-      <div className="mt-8 flex flex-wrap gap-3">
-        <LinkButton href="/contact">Demander un devis</LinkButton>
-        <LinkButton href="/mes-creations" variant="outline">Voir mes créations</LinkButton>
+    <div className="relative z-10 mx-auto flex min-h-[92vh] max-w-6xl items-center px-4">
+      <div className="max-w-3xl">
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="inline-block rounded-full border border-white/20 bg-white/5 px-4 py-1 text-xs uppercase tracking-[0.22em] text-cyan-100"
+        >
+          Studio [TON NOM]
+        </motion.p>
+        <motion.h1
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="mt-5 text-4xl font-semibold leading-tight text-white sm:text-5xl md:text-7xl"
+        >
+          Je crée des sites web immersifs
+          <span className="block bg-gradient-to-r from-cyan-200 via-cyan-300 to-violet-300 bg-clip-text text-transparent">
+            designés pour convertir.
+          </span>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="mt-6 max-w-2xl text-lg text-slate-200"
+        >
+          Expériences premium, performances élevées et animations soignées pour marquer vos visiteurs dès la première seconde.
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="mt-8 flex flex-wrap gap-3"
+        >
+          <LinkButton href="#services">Mes services</LinkButton>
+          <LinkButton href="/contact" variant="outline">Contact</LinkButton>
+        </motion.div>
       </div>
-      <div className="mt-8 flex flex-wrap gap-2">
-        {badges.map((badge) => (
-          <span key={badge} className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-slate-300">{badge}</span>
-        ))}
-      </div>
-
-      <motion.div
-        className="mt-10 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300"
-        animate={{ y: [0, 5, 0] }}
-        transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-      >
-        Scroll pour découvrir l’expérience
-      </motion.div>
     </div>
   </section>
 );

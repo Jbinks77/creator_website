@@ -1,18 +1,22 @@
-# Studio [TON NOM] — Site vitrine premium
+# Studio [TON NOM] — Site vitrine immersif (Next.js + 3D)
 
-Site vitrine Next.js 14 (App Router) en français pour vendre des services de création web haut de gamme.
+Site vitrine professionnel avec **Hero 3D interactif** (React Three Fiber), contenu en français, et 3 pages : Accueil, Mes créations, Contact.
 
 ## Stack
-- Next.js 14 + TypeScript
+- Next.js 14 (App Router) + TypeScript
 - TailwindCSS
 - Framer Motion
-- Composants style shadcn/ui
-- lucide-react
+- React Three Fiber + Drei + Three.js
+- React Hook Form + Zod
 - Recharts
 
-## Lancement
+## Installation
 ```bash
 npm install
+```
+
+## Développement
+```bash
 npm run dev
 ```
 
@@ -22,13 +26,17 @@ npm run build
 npm run start
 ```
 
-## Qualité
+## Vérifications
 ```bash
 npm run lint
 npm run typecheck
 ```
 
-## Pages
-- `/` : accueil (hero, services, résultats, process, widgets)
-- `/mes-creations` : portfolio filtrable + modal détail
-- `/contact` : formulaire validé (simulation d’envoi)
+## Routes
+- `/` : Hero 3D plein écran + sections Services / Widgets
+- `/mes-creations` : grille responsive des projets (dont Elieli)
+- `/contact` : formulaire validé et accessible
+
+## Notes perf
+- Le composant 3D est chargé en **lazy load** (`next/dynamic`, `ssr: false`) pour limiter le coût JS initial.
+- Les visuels portfolio utilisent `next/image`.

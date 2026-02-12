@@ -3,6 +3,7 @@ import { ProcessSection } from '@/components/sections/process-section';
 import { ResultsSection } from '@/components/sections/results-section';
 import { ServicesSection } from '@/components/sections/services-section';
 import { WidgetsSection } from '@/components/sections/widgets-section';
+import { ImmersiveShowcaseSection } from '@/components/sections/immersive-showcase-section';
 
 export default function HomePage() {
   return (
@@ -11,6 +12,7 @@ export default function HomePage() {
       <ServicesSection />
       <ResultsSection />
       <ProcessSection />
+      <ImmersiveShowcaseSection />
       <WidgetsSection />
     </>
   );

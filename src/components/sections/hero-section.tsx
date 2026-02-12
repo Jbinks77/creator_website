@@ -7,6 +7,19 @@ const badges = ['Next.js', 'UI premium', 'SEO', 'Performance'];
 
 export const HeroSection = () => (
   <section className="aurora relative overflow-hidden pt-16 md:pt-24">
+    <div className="pointer-events-none absolute inset-0">
+      <motion.div
+        className="absolute -left-10 top-10 h-52 w-52 rounded-full bg-cyan-300/20 blur-3xl"
+        animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute right-0 top-0 h-64 w-64 rounded-full bg-violet-400/20 blur-3xl"
+        animate={{ x: [0, -40, 0], y: [0, 20, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+      />
+    </div>
+
     <div className="mx-auto max-w-6xl px-4">
       <motion.h1
         initial={{ opacity: 0, y: 30 }}
@@ -29,6 +42,14 @@ export const HeroSection = () => (
           <span key={badge} className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-slate-300">{badge}</span>
         ))}
       </div>
+
+      <motion.div
+        className="mt-10 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300"
+        animate={{ y: [0, 5, 0] }}
+        transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        Scroll pour découvrir l’expérience
+      </motion.div>
     </div>
   </section>
 );

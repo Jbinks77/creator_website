@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 230 33% 7%;
+  --foreground: 220 30% 96%;
+  --card: 233 31% 10%;
+  --primary: 191 92% 62%;
+  --muted: 230 20% 70%;
+  --border: 228 25% 20%;
+}
+
+* {
+  @apply border-border;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+  font-feature-settings: 'rlig' 1, 'calt' 1;
+  background-image: radial-gradient(circle at 20% 20%, rgba(77, 196, 255, 0.12), transparent 35%),
+    radial-gradient(circle at 80% 0%, rgba(136, 83, 255, 0.18), transparent 28%),
+    linear-gradient(180deg, #080b16 0%, #06080f 100%);
+}
+
+.glass-card {
+  @apply border border-white/10 bg-white/5 backdrop-blur-xl shadow-panel;
+}
+
+.aurora::before,
+.aurora::after {
+  content: '';
+  position: absolute;
+  inset: auto;
+  width: 28rem;
+  height: 28rem;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.4;
+  z-index: -1;
+  animation: drift 14s ease-in-out infinite alternate;
+}
+
+.aurora::before {
+  background: rgba(73, 229, 255, 0.45);
+  top: -5rem;
+  left: -2rem;
+}
+
+.aurora::after {
+  background: rgba(154, 107, 255, 0.35);
+  right: -3rem;
+  bottom: -8rem;
+}
+
+@keyframes drift {
+  from { transform: translate3d(-10px, -10px, 0) scale(0.95); }
+  to { transform: translate3d(20px, 15px, 0) scale(1.05); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+html {
+  scroll-behavior: smooth;
+}

@@ -2,13 +2,13 @@ export type ProjectType = 'Vitrine' | 'Landing' | 'E-commerce';
 
 export const projects = [
   {
-    title: 'Elieli — Site vitrine',
+    title: 'Vitrine - prothésiste ongulaire',
     type: 'Vitrine' as ProjectType,
     description: 'Site vitrine moderne avec animations et sections claires.',
     stack: ['Next.js', 'Tailwind', 'Framer Motion'],
     tags: ['Brand', 'UX', 'Performance'],
     link: 'https://website-elieli2.vercel.app/',
-    image: '/placeholders/project-elieli.svg'
+    image: '/placeholders/project-elieli-home.svg'
   },
   {
     title: 'Pulse Finance',

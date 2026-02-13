@@ -1,6 +1,7 @@
 'use client';
 
 import * as Dialog from '@radix-ui/react-dialog';
+import Link from 'next/link';
 import { services } from '@/data/services';
 import { TiltCard } from '@/components/shared/tilt-card';
 
@@ -29,7 +30,7 @@ export const ServicesSection = () => (
                     <p className="mt-4 text-sm"><span className="font-semibold">Délais typiques :</span> {service.delay}</p>
                     <p className="mt-3 text-sm font-semibold">Livrables</p>
                     <ul className="mt-2 space-y-1 text-sm text-[var(--text-secondary)]">{service.deliverables.map((l) => <li key={l}>• {l}</li>)}</ul>
-                    <a href="/contact" className="mt-5 inline-flex rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-white">Demander un devis</a>
+                    <Link href="/contact" className="mt-5 inline-flex rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-white">Demander un devis</Link>
                   </Dialog.Content>
                 </Dialog.Portal>
               </Dialog.Root>

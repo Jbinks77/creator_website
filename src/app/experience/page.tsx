@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { ExperiencePage } from '@/components/experience/experience-page';
+import { ExperiencePage } from '@/components/experience/ExperiencePage';
 
 export const metadata: Metadata = {
   title: 'Expérience | Studio [TON NOM]',

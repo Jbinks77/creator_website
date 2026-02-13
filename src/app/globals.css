@@ -79,3 +79,15 @@ textarea:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+
+@keyframes transformationSweep {
+  0%, 84%, 100% { transform: translateX(-120%); opacity: 0; }
+  88% { opacity: 0.35; }
+  95% { transform: translateX(120%); opacity: 0.12; }
+}
+
+.transformation-sweep {
+  background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,0.14) 50%, transparent 65%);
+  animation: transformationSweep 8s ease-in-out infinite;
+}

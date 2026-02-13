@@ -6,8 +6,11 @@ import { Chapters, chapters } from '@/components/transformation/Chapters';
 import { Stage } from '@/components/transformation/Stage';
 
 const getActiveIndex = (value: number) => {
-  const idx = chapters.findIndex((ch) => value >= ch.range[0] && value <= ch.range[1]);
-  return idx === -1 ? chapters.length - 1 : idx;
+  if (value < 0.2) return 0;
+  if (value < 0.4) return 1;
+  if (value < 0.6) return 2;
+  if (value < 0.8) return 3;
+  return 4;
 };
 
 export const TransformationPage = () => {
@@ -52,8 +55,8 @@ export const TransformationPage = () => {
         <p className="mt-3 max-w-2xl text-[var(--text-secondary)]">Ancien site → site parfait : typographie, design, conversion, performance.</p>
       </section>
 
-      <section ref={containerRef} className="mx-auto mt-10 grid min-h-[360vh] w-full max-w-[1120px] gap-10 px-4 lg:grid-cols-[56%,44%]">
-        <Stage progress={scrollYProgress} />
+      <section ref={containerRef} className="relative mx-auto mt-10 grid min-h-[320vh] w-full max-w-[1120px] gap-10 px-4 lg:grid-cols-[56%,44%]">
+        <Stage progress={scrollYProgress} activeChapter={activeIndex} />
         <Chapters activeIndex={activeIndex} reduced={Boolean(reduced)} />
       </section>
     </main>

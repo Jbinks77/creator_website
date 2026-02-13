@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useMotionValueEvent, useReducedMotion, useScroll } from 'framer-motion';
+import { useMotionValueEvent, useReducedMotion, useScroll } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Chapters, chapters } from '@/components/transformation/Chapters';
 import { Stage } from '@/components/transformation/Stage';
@@ -19,7 +19,6 @@ export const TransformationPage = () => {
     target: containerRef,
     offset: ['start start', 'end end']
   });
-
 
   useMotionValueEvent(scrollYProgress, 'change', (value) => {
     const clamped = Math.max(0, Math.min(1, value));

@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #050608;
+  --surface: #0b0d12;
+  --border: #1a1f2a;
+  --text: #f5f7fa;
+  --text-secondary: rgba(245, 247, 250, 0.72);
+  --accent: #4f8cff;
+  --success: #46d39a;
+}
+
+* {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+html,
+body {
+  font-size: 16px;
+  background: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.6;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  outline: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  box-shadow: 0 0 0 3px rgba(79, 140, 255, 0.38);
+  border-radius: 999px;
+}
+
+.shadow-card {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04), 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+.shadow-card-hover {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04), 0 24px 60px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes sweep {
+  0%,
+  82%,
+  100% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  85% {
+    opacity: 1;
+  }
+  92% {
+    transform: translateX(120%);
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

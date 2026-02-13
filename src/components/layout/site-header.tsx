@@ -8,6 +8,7 @@ import { FileText } from 'lucide-react';
 const links = [
   { href: '/', label: 'Accueil' },
   { href: '/experience', label: 'Expérience' },
+  { href: '/transformation', label: 'Transformation' },
   { href: '/mes-creations', label: 'Mes créations' },
   { href: '/contact', label: 'Contact' }
 ];
